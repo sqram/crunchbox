@@ -1,0 +1,10 @@
+A themes manager that saves your current programs
+themes and easily loads them later. Great for switching
+between light and dark themes.
+
+programs supported:
+- Openbox
+- GTK2 theme and icon theme
+- Tint2
+- Conky
+- Nitrogen
