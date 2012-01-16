@@ -23,7 +23,7 @@ class Base:
 		'''
 		src = self.cfg_files[app_name]
 
-		dst_path = self.cb.cb_cfg_dir + '/crunchbox/%s' % app_name
+		dst_path = self.cb.cb_cfg_dir + '/configs/%s' % app_name
 		dst_file = self.get_cfg_name(self.cfg_files[app_name]) + '-' + profile_name
 		
 		dst_uri = os.path.join(dst_path, dst_file)
@@ -34,7 +34,7 @@ class Base:
 		'''opposite of save. copy config-name to .config'''
 		# get content of config-name
 		pn = self.get_cfg_name(self.cfg_files[app_name]) + '-' + profile_name
-		f = self.cb.cb_cfg_dir + '/crunchbox/%s/%s' % (app_name, pn)
+		f = self.cb.cb_cfg_dir + '/configs/%s/%s' % (app_name, pn)
 		cfg = open(f)
 		content = cfg.read()
 		cfg.close()

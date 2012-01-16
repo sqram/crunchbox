@@ -131,9 +131,9 @@ class CrunchBox:
 			# and make a dir with that key, and we'll get ~/.config/crunchbox/crunchbox/tint2, etc.
 			os.mkdir(self.cb_cfg_dir)
 			os.mkdir(self.cb_cfg_dir + '/screenshots')
-			os.mkdir(self.cb_cfg_dir + '/crunchbox')
+			os.mkdir(self.cb_cfg_dir + '/configs')
 			for key in self.cfg_files:
-				os.mkdir(self.cb_cfg_dir + '/crunchbox/%s' % key) 
+				os.mkdir(self.cb_cfg_dir + '/configs/%s' % key) 
 	    
 	
 
