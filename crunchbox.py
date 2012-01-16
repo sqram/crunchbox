@@ -112,13 +112,11 @@ class CrunchBox:
 		when i figure out how to do it, then we only need to call() once with
 		import -window root -resize 200x175\! %s/%s.jpg;\
 		'''
-		path = '~/.config/crunchbox/screenshots'
-		call(
-			"scrot '%s.jpg' -e 'mv $f %s';\
-			convert -resize 200x125\! %s/%s.jpg %s/%s.jpg"\
-			% (name,path,path, name, path, name),
-			shell=True
-		)
+		path = expanduser('~/.config/crunchbox/screenshots')
+		scrot = """scrot '%s.jpg' -e "mv '%s.jpg' '%s/%s.jpg'";""" % (name, name, path, name)
+		convert = """convert -resize 200x125\! '%s/%s.jpg' '%s/%s.jpg'""" % (path, name, path, name)
+		command = scrot + convert
+		call(command, shell=True)
 		self.layout.append_screenshot(name)
 	
 	
