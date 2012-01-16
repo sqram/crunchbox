@@ -11,7 +11,7 @@ import gtk
 class SaveDialog(gtk.Dialog):
 	
 	def __init__(self, brunch):
-		gtk.Dialog.__init__(self,'', brunch.layout.window, 0, None)
+		gtk.Dialog.__init__(self,'Save Profile', brunch.layout.window, 0, None)
 		
 		self.profile_name = None
 		# -- create widgets
