@@ -45,6 +45,7 @@ class Layout:
 		# -- event binding
 		self.window.connect('destroy', lambda x: gtk.main_quit())
 		button_save.connect("button_press_event", crunchbox.save_clicked)
+		button_about.connect("button_press_event", crunchbox.about_clicked)
 		
 		self.window.show_all()
 

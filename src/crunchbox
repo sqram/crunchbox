@@ -6,6 +6,7 @@ from os.path import expanduser, join
 from getpass import getuser
 from subprocess import call
 from dialog_save import SaveDialog
+from dialog_about import AboutDialog
 from layout import Layout
 from apps.conky import Conky
 from apps.tint2 import Tint2
@@ -43,6 +44,9 @@ class CrunchBox:
 	def save_clicked(self, w, e):
 		dialog = SaveDialog(self)
 		
+	def about_clicked(self, w, e):
+		dialog = AboutDialog(self)
+		
 		
 		
 	def save_profile(self, name):
@@ -75,6 +79,7 @@ class CrunchBox:
 		g = GTK(self.base)
 		g.save(name)
 		
+		# take and save a screensot	
 		self.save_screenshot(name)
 		
 	
