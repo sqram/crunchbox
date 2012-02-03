@@ -8,3 +8,12 @@ programs supported:
 - Tint2
 - Conky
 - Nitrogen
+
+
+How to start:
+extract the 'crunchbox' folder to anywhere you want. Assume it's in ~/downloads/crunchbox, just do:
+$ cd downloads/crunchbox/src
+$ python crunchbox
+
+Some screenshots and more info can be found here:
+http://crunchbanglinux.org/forums/topic/17149/mmmcrunchbox/
