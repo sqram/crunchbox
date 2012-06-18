@@ -18,8 +18,11 @@ class AboutDialog(gtk.AboutDialog):
 		self.set_website("http://none.io")
 		self.set_copyright("by noneio")
 		self.set_comments("A multiple themes switcher")
-		self.set_license("Do as you wish. Try to give credit back if possible.")
-
-		self.show_all()
+		self.set_license("Do as you wish :)\nTry to give some form of credit back if possible.")
 		
-	
+
+		self.run()
+		self.destroy()
+		
+	def test(self, w, e):
+		print 'close me'

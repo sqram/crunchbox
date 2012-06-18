@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+"""
 from distutils.core import setup
 
 setup(name='crunchbox',
@@ -9,4 +9,4 @@ setup(name='crunchbox',
 	packages=['apps'],
 	package_dir={'': 'src'},
 )
-
+"""
