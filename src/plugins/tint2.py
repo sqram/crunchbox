@@ -22,4 +22,4 @@ class Tint2:
 
 					
 		# restart tint2
-		call('killall tint2;tint2 &', shell=True)
+		call('killall tint2;tint2 --restart &', shell=True)

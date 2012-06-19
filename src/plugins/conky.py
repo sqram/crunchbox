@@ -18,5 +18,5 @@ class Conky:
 
 	def load(self, profile_name, plugin_obj):
 		# conky restarts automatically when
-		# .conkyrc is changed. all done here.
-		pass
+		# .conkyrc is changed. No need for special call()
+		self.base.load(profile_name, self.class_name, plugin_obj)

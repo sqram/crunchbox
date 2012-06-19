@@ -19,4 +19,4 @@ class Urxvt:
 	
 	
 		# some need this for changes to take effects
-		call('xrdb -merge ~/.Xresources &', shell=True)
+		call('xrdb ~/.Xresources && xrdb -merge ~/.Xresources &', shell=True)
