@@ -65,35 +65,36 @@ class Io:
 			print
 		
 	
-	def delete_profile(self, widget, profile_name):
+	def delete_profile(self, widget, profile_name, button):
 		# Profile name comes as whatever.jpg. Delete the extension
 		profile_name = profile_name[:-4]
+		dirs = []	
 		
-		# Store configs name to delete here
-		to_delete = []
-
 		for plugin in self.cb.plugin_objects:
-			# Get original cfg name. ie, .conkyrc. Just split the original cfg path at the /
-			# and take last list element.
-			cfg_original = plugin.cfg.split('/')[-1]
-			cfg_profile = '%s-%s' %  (cfg_original, profile_name)
-			print cfg_profile	
-			to_delete.append(cfg_profile)
-			
-		# Now we must visit every directory in ~/.config/crunchbox/configs
-		# and delete the file. Remember, 'public' is a list of all file names
-		# in the /plugins folder. And each file name has relevant dir in /crunchbox/configs
-		# so if we have tint2.py in the /plugins dir, there will be a directory named titn2 in
-		# crunchbox/configs/
-		# (an alternative to this would be to traverse the whole /crunchbox/config/ dir, looking in 
-		# every folder for the file we want to delete)
-		
-		for f in getattr(plugins, 'public'):
-			dir_name = f[:-3] # remove .py from filenames.
-			print dir_name
-			#print "removing: " + self.cb.cb_cfg_dir + '/%s/%s' % (dir_name, cfg_profile)
-			#os.remove(self.cb.cb_cfg_dir + '/%s/%s' % (dir_name, cfg_profile))
-			#os.remove(self.cb.cb_cfg_dir + '/%s/%s' % (dir_name, cfg_profile))
+			dirname = plugin.class_name
+			print dirname
+			print '-' * 30
+
+			for cfg in plugin.cfg:
+				# Get original cfg name. ie, .conkyrc. Just split the original cfg path at the /
+				# and take last list element.
+				cfg_original = cfg.split('/')[-1]
+				cfg_profile = '%s-%s' %  (cfg_original, profile_name)
+
+				# Now go to the directory of this program, delete the file
+				to_delete = self.cb.cb_cfg_dir + dirname + '/' + cfg_profile
+				if os.path.exists(to_delete) == True:
+					print "Deleting: " + to_delete
+					os.remove(to_delete)
+				else:
+					print "Error: '%s' does not exist" % to_delete
+
+
+		# Remove screenshot
+		ss = self.cb.cb_screenshots_dir + profile_name + '.jpg'
+		os.remove(ss)
+		button.hide_all()
+		print
 
 
 	def get_cfg_name(self, path):

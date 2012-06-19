@@ -93,7 +93,7 @@ class Gui:
 		# we check to see if it was a left-click or right-click. If it
 		# was a left click, load the profile. If right, present menu
 		if e.button == 3:
-			self.rightclick_menu(e, name)
+			self.rightclick_menu(e, name, w)
 		else:
 			self.crunchbox.load_profile(w, e)
 
@@ -116,13 +116,14 @@ class Gui:
 		# sacrificing a for loop here for one liner neatness.
 		map(lambda box: self.vbox_main.pack_start(box,0,0,0), self.boxlist)
 		
-	def rightclick_menu(self, e, name):
+	def rightclick_menu(self, e, name, button):
 		menu = gtk.Menu()
 		item_delete = gtk.MenuItem('delete')
 		menu.append(item_delete)
 		menu.popup(None, None, None, e.button , e.time)
 		menu.show_all()
-		item_delete.connect('activate', self.crunchbox.io.delete_profile, name)
+		# we send the button widget because after we delete this profile, we remove it from the gui
+		item_delete.connect('activate', self.crunchbox.io.delete_profile, name, button)
 
 		
 		
