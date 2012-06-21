@@ -16,13 +16,13 @@ class AboutDialog(gtk.AboutDialog):
 		self.set_program_name("Crunchbox")
 
 		self.set_website("http://none.io")
-		self.set_copyright("by noneio")
+		self.set_copyright("noneio")
 		self.set_comments("A multiple themes switcher")
-		self.set_license("Do as you wish :)\nTry to give some form of credit back if possible.")
+		self.set_license("GNU GENERAL PUBLIC LICENSE")
+		self.set_authors(['Bruce Franchi (noneio)'])
+		self.set_artists(['No one. Looking for someone to design a logo.'])
 		
 
 		self.run()
 		self.destroy()
-		
-	def test(self, w, e):
-		print 'close me'
+	

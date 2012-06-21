@@ -18,4 +18,5 @@ class Openbox:
 		self.base.load(profile_name, self.class_name, plugin_obj)
 
 		# reload openbox's config
-		call('openbox --reconfigure', shell=True)
+		# call('openbox --reconfigure', shell=True)
+		call('openbox --restart', shell=True)
