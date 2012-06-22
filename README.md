@@ -17,28 +17,28 @@ By defaul, Crunchbox comes with the following plugins
 - Urxvt (.Xresources)
 - Weechat
 
-## Screenshot
 
+## Screenshot
 ![Screenshot](http://i.imgur.com/bU9Qo.png)
 
 ## Dependencies
 Python2
+
 Scrot & ImageMagick (for saving + resizing screenshot)
 
-##
-## -----------------------------------------------------------------------
+
+## Instructions
 1.How to start:
  a. Extract the 'crunchbox' folder to anywhere you want. Assume it's in ~/downloads/crunchbox, just do:
     $ cd downloads/crunchbox/src
     $ python crunchbox
 
+
 Some screenshots and more info can be found here:
 http://crunchbanglinux.org/forums/topic/17149/mmmcrunchbox/
 
 
-
 ## HOW TO ADD SUPPORT FOR A PROGRAM (plugin)
-## -----------------------------------------------------------------------
 It's extremely simple. All you have to do is tell Crunchbox
 where the program's config file is located. If you know minimal Python,
 you will figure out right away. If you know 0 python, follow steps below.
