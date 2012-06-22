@@ -1,8 +1,9 @@
+## What
 A themes manager that saves your current programs
 themes and easily loads them later. 
 Changes the look of your desktop on the fly.
-Here's a video of the program in action:
-http://www.youtube.com/watch?v=tmftzqiv0c4
+* [Here's a video of the program in action](http://www.youtube.com/watch?v=tmftzqiv0c4)
+
 
 programs supported: Any.
 
@@ -16,10 +17,16 @@ By defaul, Crunchbox comes with the following plugins
 - Urxvt (.Xresources)
 - Weechat
 
+## Screenshot
 
+![Screenshot](http://i.imgur.com/bU9Qo.png)
 
-<h2>INSTRUCTIONS</h2>
------------------------------------------------------------------------
+## Dependencies
+Python2
+Scrot & ImageMagick (for saving + resizing screenshot)
+
+##
+## -----------------------------------------------------------------------
 1.How to start:
  a. Extract the 'crunchbox' folder to anywhere you want. Assume it's in ~/downloads/crunchbox, just do:
     $ cd downloads/crunchbox/src
@@ -29,9 +36,9 @@ Some screenshots and more info can be found here:
 http://crunchbanglinux.org/forums/topic/17149/mmmcrunchbox/
 
 
-----------------------------------------------------------------------
-HOW TO ADD SUPPORT FOR A PROGRAM (plugin)
------------------------------------------------------------------------
+
+## HOW TO ADD SUPPORT FOR A PROGRAM (plugin)
+## -----------------------------------------------------------------------
 It's extremely simple. All you have to do is tell Crunchbox
 where the program's config file is located. If you know minimal Python,
 you will figure out right away. If you know 0 python, follow steps below.
@@ -63,11 +70,9 @@ Say you want to add support for Openbox(which is there already. Just using for e
    You simply write just as you would if you were in a terminal
 
 
-   
 
-----------------------------------------------------------------------
-F A Q
------------------------------------------------------------------------
+## F A Q
+## -----------------------------------------------------------------------
 Q) When i save, the program disappear for about a second, and then appears again.
 A) This is intended. This is so the program itself isn't present in your screenshot.
 
