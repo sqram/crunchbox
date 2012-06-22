@@ -29,11 +29,15 @@ class Io:
 
 		print 'app name: ' + basename( app_name)
 
-		for cfg in plugin_obj.cfg:
-			src = cfg		
-			dst = self.cb.cb_cfg_dir + '/%s/%s-%s' % (app_name, self.get_cfg_name(cfg), profile_name)
-			copyfile(src, dst)
-			print "Saving %s's current config into %s" % (src, dst)
+		try:
+
+			for cfg in plugin_obj.cfg:
+				src = cfg		
+				dst = self.cb.cb_cfg_dir + '/%s/%s-%s' % (app_name, self.get_cfg_name(cfg), profile_name)
+				copyfile(src, dst)
+				print "Saving %s's current config into %s" % (src, dst)
+		except:
+			print "No such file to save. %s probably ins't installed and thus there is no config file for it."
 
 
 		
@@ -50,19 +54,21 @@ class Io:
 
 		# get content of config-name
 		for cfg in plugin_obj.cfg:
-			pn = self.get_cfg_name(cfg) + '-' + profile_name
-
-			f = self.cb.cb_cfg_dir + '/%s/%s' % (app_name, pn)
-			print "Loading cfg file: " + f
-			c = open(f)
-			content = c.read()
-			c.close()
-
-			# copy that content into original config in system
-			c = open(cfg, 'w')
-			c.write(content)
-			c.close()
-			print
+			try:
+				pn = self.get_cfg_name(cfg) + '-' + profile_name
+				f = self.cb.cb_cfg_dir + '/%s/%s' % (app_name, pn)
+				print "Loading cfg file: " + f
+				c = open(f)
+				content = c.read()
+				c.close()
+	
+				# copy that content into original config in system
+				c = open(cfg, 'w')
+				c.write(content)
+				c.close()
+				print
+			except:
+				print "Could not load file. It's probably deleted or moved"
 		
 	
 	def delete_profile(self, widget, profile_name, button):
@@ -71,23 +77,25 @@ class Io:
 		dirs = []	
 		
 		for plugin in self.cb.plugin_objects:
-			dirname = plugin.class_name
-			print dirname
-			print '-' * 30
+			try:
+				dirname = plugin.class_name
+				print dirname
+				print '-' * 30
+				for cfg in plugin.cfg:
+					# Get original cfg name. ie, .conkyrc. Just split the original cfg path at the /
+					# and take last list element.
+					cfg_original = cfg.split('/')[-1]
+					cfg_profile = '%s-%s' %  (cfg_original, profile_name)
 
-			for cfg in plugin.cfg:
-				# Get original cfg name. ie, .conkyrc. Just split the original cfg path at the /
-				# and take last list element.
-				cfg_original = cfg.split('/')[-1]
-				cfg_profile = '%s-%s' %  (cfg_original, profile_name)
-
-				# Now go to the directory of this program, delete the file
-				to_delete = self.cb.cb_cfg_dir + dirname + '/' + cfg_profile
-				if os.path.exists(to_delete) == True:
-					print "Deleting: " + to_delete
-					os.remove(to_delete)
-				else:
-					print "Error: '%s' does not exist" % to_delete
+					# Now go to the directory of this program, delete the file
+					to_delete = self.cb.cb_cfg_dir + dirname + '/' + cfg_profile
+					if os.path.exists(to_delete) == True:
+						print "Deleting: " + to_delete
+						os.remove(to_delete)
+					else:
+						print "Error: '%s' does not exist" % to_delete
+			except:
+				print "Could not delete. File not found. Probably has been deleted manually."
 
 
 		# Remove screenshot

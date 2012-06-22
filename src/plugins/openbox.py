@@ -5,7 +5,9 @@ class Openbox:
 
 	def __init__(self, base):
 		self.base = base
-		self.cfg = [expanduser("~/.config/openbox/rc.xml")]
+		self.cfg = [
+			expanduser("~/.config/openbox/rc.xml")
+		]
 		
 		# This is the path to where crunchbox stores all this plugin's cfg
 		self.class_name = self.__class__.__name__
@@ -20,3 +22,4 @@ class Openbox:
 		# reload openbox's config
 		# call('openbox --reconfigure', shell=True)
 		call('openbox --restart', shell=True)
+

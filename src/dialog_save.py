@@ -13,7 +13,9 @@ class SaveDialog(gtk.Dialog):
 		# -- create widgets
 		label = gtk.Label("Profile Name: ")
 		entry = gtk.Entry()
-		entry.set_activates_default(gtk.TRUE)
+		
+		self.set_focus(entry)
+		entry.grab_focus()
 		
 		# -- arrange layout
 		self.vbox.pack_start(label)
@@ -26,6 +28,7 @@ class SaveDialog(gtk.Dialog):
 		# -- event binding
 		#button.connect("button_press_event", self.ok_clicked, entry, crunchbox)
 		self.show_all()
+		self.set_focus(entry)
 		response = self.run()
 
 		if response == gtk.RESPONSE_OK:
