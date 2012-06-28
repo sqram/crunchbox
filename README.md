@@ -13,7 +13,7 @@ By defaul, Crunchbox comes with the following plugins
 - Tint2
 - Conky
 - Nitrogen
-- Barsh 
+- Bash 
 - Urxvt (.Xresources)
 - Weechat
 
@@ -30,7 +30,7 @@ Scrot & ImageMagick (for saving + resizing screenshot)
 1.How to start:  
  a. Extract the 'crunchbox' folder to anywhere you want. Assume it's in ~/downloads/crunchbox, just do:  
     $ cd downloads/crunchbox/src  
-    $ python crunchbox  
+    $ python crunchbox.py
 
 
 Some screenshots and more info can be found here:

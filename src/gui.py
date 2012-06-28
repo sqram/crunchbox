@@ -118,7 +118,7 @@ class Gui:
 		
 	def rightclick_menu(self, e, name, button):
 		menu = gtk.Menu()
-		item_delete = gtk.MenuItem('delete')
+		item_delete = gtk.MenuItem('delete from crunchbox')
 		menu.append(item_delete)
 		menu.popup(None, None, None, e.button , e.time)
 		menu.show_all()
