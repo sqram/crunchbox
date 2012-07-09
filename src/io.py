@@ -22,12 +22,20 @@ class Io:
 		# @app_name = used to save the new cfg file in ~/,config/crunchbox/<app>/
 		
 		print '-'*30
+		
+		
 				
 		app_name = basename(app_name)
 		if app_name[-1] == '.':
 			app_name = app_name[:-1]
 
-		print 'app name: ' + basename( app_name)
+		print 'app name: ' + basename(app_name)
+
+
+		# The user may have added a new plugin, ie, pluginX. Let's create the pluginX
+		# directory in ~/.config/crunchbox/configs so if it doesn't exist.
+		if not os.path.exists(self.cb.cb_cfg_dir + app_name):
+			os.mkdir(self.cb.cb_cfg_dir + app_name)
 
 		try:
 

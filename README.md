@@ -7,7 +7,7 @@ Changes the look of your desktop on the fly.
 
 programs supported: Any.  
 
-By defaul, Crunchbox comes with the following plugins
+Out of the box, Crunchbox comes with the following plugins
 - Openbox
 - GTK2 theme and icon theme
 - Tint2
@@ -16,6 +16,7 @@ By defaul, Crunchbox comes with the following plugins
 - Bash 
 - Urxvt (.Xresources)
 - Weechat
+- Ncmpcpp 
 
 
 ## Screenshot

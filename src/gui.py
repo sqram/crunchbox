@@ -85,7 +85,7 @@ class Gui:
 		image.show()
 		b.connect("button_press_event", self.resolve_button_click, f)
 		# Set a tooltip for this button. (display profile name on hover)
-		self.tooltip.set_tip(b, f)
+		self.tooltip.set_tip(b, f[:-4])
 		return b
 
 	def resolve_button_click(self, w, e, name):
