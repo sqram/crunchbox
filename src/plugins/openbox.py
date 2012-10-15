@@ -7,6 +7,7 @@ class Openbox:
 		self.base = base
 		self.cfg = [
 			expanduser("~/.config/openbox/rc.xml")
+			expanduser("~/.config/openbox/menu.xml")
 		]
 		
 		# This is the path to where crunchbox stores all this plugin's cfg
