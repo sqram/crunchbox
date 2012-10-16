@@ -6,7 +6,7 @@ class Openbox:
 	def __init__(self, base):
 		self.base = base
 		self.cfg = [
-			expanduser("~/.config/openbox/rc.xml")
+			expanduser("~/.config/openbox/rc.xml"),
 			expanduser("~/.config/openbox/menu.xml")
 		]
 		

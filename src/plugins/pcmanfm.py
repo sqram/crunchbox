@@ -1,7 +1,7 @@
 from subprocess import call
 from os.path import expanduser
 
-class PCManFM:
+class Pcmanfm:
 	
 	def __init__(self, base):
 		self.base = base
