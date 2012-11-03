@@ -7,7 +7,7 @@ class Openbox:
 		self.base = base
 		self.cfg = [
 			expanduser("~/.config/openbox/rc.xml"),
-			expanduser("~/.config/openbox/menu.xml")
+			expanduser("~/.config/openbox/menu.xml"),
 			expanduser("~/.config/openbox/autostart")
 		]
 		
