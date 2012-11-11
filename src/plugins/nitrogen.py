@@ -5,7 +5,10 @@ class Nitrogen:
 	
 	def __init__(self, base):
 		self.base = base
-		self.cfg = [expanduser("~/.config/nitrogen/bg-saved.cfg")]
+		self.cfg = [
+			expanduser("~/.config/nitrogen/bg-saved.cfg"),
+			expanduser("~/.config/nitrogen/nitrogen.cfg")
+		]
 		
 		
 		# This is the path to where crunchbox stores all this plugin's cfg
