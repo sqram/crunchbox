@@ -1,3 +1,8 @@
+# Dependencies
+Python2  
+Scrot & ImageMagick (for saving + resizing screenshot)  
+  
+ 
 ## What
 A themes manager that saves your current programs  
 themes and easily loads them later.   
@@ -22,9 +27,6 @@ Out of the box, Crunchbox comes with the following plugins
 ## Screenshot
 ![Screenshot](http://i.imgur.com/bU9Qo.png)
 
-## Dependencies
-Python2  
-Scrot & ImageMagick (for saving + resizing screenshot)
 
 
 ## Instructions
