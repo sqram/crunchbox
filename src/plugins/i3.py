@@ -1,13 +1,12 @@
 from subprocess import call
 from os.path import expanduser
 
-class Openbox:
+class I3:
 
 	def __init__(self, base):
 		self.base = base
 		self.cfg = [
-			expanduser("~/.config/openbox/rc.xml"),
-			expanduser("~/.config/openbox/menu.xml")
+			expanduser("~/.i3/config"),
 		]
 
 		# This is the path to where crunchbox stores all this plugin's cfg
