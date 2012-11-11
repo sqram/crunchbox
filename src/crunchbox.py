@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import gtk
 import os
@@ -12,13 +12,13 @@ from io import Io
 import plugins
 import gobject
 
-#TODO - mpd, ncmpcpp, ob menu
+#TODO -  ob menu?
 class CrunchBox:
 
 	def __init__(self):
 		# Holds things like plugins.conky.Conky, plugins.tint2.Tint2, etc.
 		# We can later make object out of them by adding ()
-		# self.plugin_modules = [] 
+		# self.plugin_modules = []
 
 		# This will hold instantiated objects of the plugin classes.
 		# So if we have plugins.conky.Conky, this will hold a Conky obj.
@@ -29,7 +29,7 @@ class CrunchBox:
 		self.cb_dir = expanduser('~/.config/crunchbox')
 		self.cb_cfg_dir = self.cb_dir + '/configs/'
 		self.cb_screenshots_dir = self.cb_dir + '/screenshots/'
-		
+
 		# Required startup method calls
 
 		self.io = Io(self)
@@ -38,16 +38,16 @@ class CrunchBox:
 		self.check_plugins_cfg_dir()
 
 		# instantiate objects and variables
-		self.gui = Gui(self)	
+		self.gui = Gui(self)
 
 
-	
 
-	
+
+
 	def cfg_dir_exists(self):
 		# If ~/.config/crunchbox does not exist, user is running crunchbox for the first time.
 		# So let's create our .config/crunchbox dir and inner dirs.
-		if os.path.exists(self.cb_dir) == False:			
+		if os.path.exists(self.cb_dir) == False:
 			os.mkdir(self.cb_dir)
 			os.mkdir(self.cb_screenshots_dir)
 			os.mkdir(self.cb_cfg_dir)
@@ -66,13 +66,13 @@ class CrunchBox:
 			if os.path.exists(self.cb_cfg_dir + '/%s' % filename)  == False:
 				# Put inside try, in case it already exists.
 				print filename
-				os.mkdir(self.cb_cfg_dir + '/%s' % filename) 
+				os.mkdir(self.cb_cfg_dir + '/%s' % filename)
 		'''
 		for obj in self.plugin_objects:
 			if os.path.exists(obj.plugin_cfg_dir) ==  False:
 				os.mkdir(obj.plugin_cfg_dir)
 	# load plugins
-	def load_plugins(self):	
+	def load_plugins(self):
 		# plugins.public is a list of filenames inside /plugins. (conky.py, bash.py, etc)
 		# From those values, we can get the class name that belongs to each file. conky.py
 		# would give us 'Conky'. To get the class name from each file, head over to the link:
@@ -85,19 +85,19 @@ class CrunchBox:
 			module = getattr(m, f[:-3].capitalize())
 			obj = module(self.io) # ie, obj = plugins.conky.Conky(self.io)
 			self.plugin_objects.append(obj)
-			
 
-	
-	
+
+
+
 	# Save and about buttons
 	def save_clicked(self, w, e):
 		dialog = SaveDialog(self)
-		
+
 	def about_clicked(self, w, e):
 		dialog = AboutDialog(self)
-		
-		
-		
+
+
+
 	def save_profile(self, profile_name):
 		for o in self.plugin_objects:
 			print 'plugin: ', o
@@ -112,7 +112,7 @@ class CrunchBox:
 	def load_profile(self, w, e):
 		'''this is called from gui.py when screenshot is clicked'''
 		# img_name is the name of the screenshot, aka name of our profile
-		name = w.get_data('img_name')		
+		name = w.get_data('img_name')
 		for o in self.plugin_objects:
 			o.load(name, o)
 
@@ -127,7 +127,7 @@ class CrunchBox:
 			return False
 		else:
 			self.check_screenshot(cmd)
-	
+
 
 	def save_screenshot(self, name):
 		'''
@@ -140,24 +140,24 @@ class CrunchBox:
 		# When we take a screenshot of the desktop, we hide the crunchbang window.
 		self.gui.window.hide_all()
 
-		path = expanduser('~/.config/crunchbox/screenshots')	
+		path = expanduser('~/.config/crunchbox/screenshots')
 		# TODO make it so we don't have to use shell=True
 		scrot = """scrot  '%s.jpg' -e "mv '%s.jpg' '%s/%s.jpg'";""" % (name, name, path, name)
-		convert = """convert -resize 200x125\! '%s/%s.jpg' '%s/%s.jpg'""" % (path, name, path, name)	
+		convert = """convert -resize 200x125\! '%s/%s.jpg' '%s/%s.jpg'""" % (path, name, path, name)
 		command = scrot + convert
-		
-		
+
+
 		gobject.timeout_add(390,self.check_screenshot, command, name)
 
-		
+
 		print "The disappearing and reappearing of the program that you just saw is normal."
 		print "It's so that the Crunchbox window isn't included in the screenshot."
 
 		self.gui.window.realize()
-	
-					                              	
-		
-    	
+
+
+
+
 
 cb = CrunchBox()
 gtk.main()
