@@ -50,17 +50,17 @@ Look at plugins that ship with Crunchbox.
 
 Say you want to add support for Openbox(which is there already. Just using for example).
 
-__1)__ Create file openbox.py inside the plugins directory
-__2)__ Copy the content of (ie, tint2.py) into openbox.py
-__3)__ Change the class name on line #4. So "class Tint2: " becomes "class Openbox: "
-__4)__ Change the line that is the path to the config file in your system.
-   So in our case, we would change the line
-   -> self.cfg = [ expanduser("~/.config/tint2/tint2rc) ]
-   to make it look like
-   -> self.cfg = [ expanduser("~/.config/openbox/rc.xml") ]
+__1)__ Create file openbox.py inside the plugins directory  
+__2)__ Copy the content of (ie, tint2.py) into openbox.py  
+__3)__ Change the class name on line #4. So "class Tint2: " becomes "class Openbox: "  
+__4)__ Change the line that is the path to the config file in your   system.
+   So in our case, we would change the line  
+   -> self.cfg = [ expanduser("~/.config/tint2/tint2rc) ]  
+   to make it look like  
+   -> self.cfg = [ expanduser("~/.config/openbox/rc.xml") ]  
 
-__5)__ Inside the load method, we tell Crunchbox what command to run to restart the program.
-   Notice that inside tint2.py, we have:
+__5)__ Inside the load method, we tell Crunchbox what command to run to restart the program.  
+   Notice that inside tint2.py, we have:  
    call('killall tint2; tint2 &') <--- this causes tint2 to restart, with the new cfg!
    As another example, look inside openbox.py. We have
    call('openbox --reconfigure')
