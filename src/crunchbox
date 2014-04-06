@@ -28,7 +28,9 @@ class CrunchBox:
 		# Where we will save our configs/dotfiles, screenshots, etc.
 		self.cb_dir = expanduser('~/.config/crunchbox')
 		self.cb_cfg_dir = self.cb_dir + '/configs/'
-		self.cb_screenshots_dir = self.cb_dir + '/screenshots/'
+                self.cb_screenshots_dir = self.cb_dir + '/screenshots/'
+		self.cb_screenshots_thumbs_dir = self.cb_dir + '/screenshots/thumbs/'
+                self.cb_screenshots_original_dir = self.cb_dir + '/screenshots/original/'
 
 		# Required startup method calls
 
@@ -40,6 +42,10 @@ class CrunchBox:
 		# instantiate objects and variables
 		self.gui = Gui(self)
 
+                # Check dependencies
+                if not self.check_dependencies():
+                    print "PLEASE CHECK THAT SCROT AND IMAGEMAGICK ARE INSTALLED!!"
+
 
 
 
@@ -47,9 +53,12 @@ class CrunchBox:
 	def cfg_dir_exists(self):
 		# If ~/.config/crunchbox does not exist, user is running crunchbox for the first time.
 		# So let's create our .config/crunchbox dir and inner dirs.
+                # TODO this should be a loop where paths are in array
 		if os.path.exists(self.cb_dir) == False:
 			os.mkdir(self.cb_dir)
-			os.mkdir(self.cb_screenshots_dir)
+                        os.mkdir(self.cb_screenshots_dir)
+			os.mkdir(self.cb_screenshots_thumbs_dir)
+                        os.mkdir(self.cb_screenshots_original_dir)
 			os.mkdir(self.cb_cfg_dir)
 
 
@@ -129,6 +138,20 @@ class CrunchBox:
 			self.check_screenshot(cmd)
 
 
+        # Try to check if dependencies are installed (scrot, imagemagick, etc)
+        def check_dependencies(self):
+            binaries = [
+                '/bin/scrot',
+                '/bin/convert'
+            ]
+            exists = True
+            for binary in binaries:
+                if not os.path.isfile(binary):
+                    exists = False
+
+            return exists
+
+
 	def save_screenshot(self, name):
 		'''
 		unfortunatelly, imagick's screenshots won't show composite windows
@@ -140,13 +163,14 @@ class CrunchBox:
 		# When we take a screenshot of the desktop, we hide the crunchbang window.
 		self.gui.window.hide_all()
 
-		path = expanduser('~/.config/crunchbox/screenshots')
+		original_path = self.cb_screenshots_original_dir
+                thumbs_path = self.cb_screenshots_thumbs_dir
 		# TODO make it so we don't have to use shell=True
-		scrot = """scrot  '%s.jpg' -e "mv '%s.jpg' '%s/%s.jpg'";""" % (name, name, path, name)
-		convert = """convert -resize 200x125\! '%s/%s.jpg' '%s/%s.jpg'""" % (path, name, path, name)
+		scrot = """scrot  '%s.png' -e "mv '%s.png' '%s/%s.png'";""" % (name, name, original_path, name)
+		convert = """convert -resize 200x125\! '%s/%s.png' '%s/%s.png'""" % (original_path, name, thumbs_path, name)
 		command = scrot + convert
 
-
+                # Call check_screenshots with `command` and `name` as args
 		gobject.timeout_add(390,self.check_screenshot, command, name)
 
 

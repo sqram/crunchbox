@@ -59,14 +59,14 @@ class Gui:
 
 	def append_screenshot(self, name):
 		'''appends screenshot to list when profile is saved'''
-		image = self._create_image(self.crunchbox.cb_screenshots_dir, name + '.jpg')
+		image = self._create_image(self.crunchbox.cb_screenshots_thumbs_dir, name + '.png')
 
 		hbox = self.boxlist[-1]
 		num_children =  len(hbox.get_children())
 		if num_children in [0,3]:
 			hbox = gtk.HBox()
 			hbox.pack_start(image)
-			self.vbox_vbox_middle.add(hbox)
+			self.vbox_middle.add(hbox)
 			hbox.show()
 			self.boxlist.append(hbox)
 		else:
@@ -110,9 +110,9 @@ class Gui:
 
 		# a list containing hboxes; start with one inside
 		self.boxlist = [gtk.HBox()]
-		screenshots = os.listdir(self.crunchbox.cb_screenshots_dir)
+		screenshots = os.listdir(self.crunchbox.cb_screenshots_thumbs_dir)
 		for f in screenshots:
-			image = self._create_image(self.crunchbox.cb_screenshots_dir, f)
+			image = self._create_image(self.crunchbox.cb_screenshots_thumbs_dir, f)
 			if len(self.boxlist[-1].get_children()) == 3:
 				self.boxlist.append(gtk.HBox())
 
