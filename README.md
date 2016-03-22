@@ -26,9 +26,9 @@ Out of the box, Crunchbox comes with the following plugins
 
 
 ## Screenshot
-![Screenshot](http://i.imgur.com/UnbC9Lh.png)
-![Screenshot](http://i.imgur.com/J6z2rDf.png)
-![Screenshot](http://i.imgur.com/vj6gaAk.png)
+![Screenshot](http://i.imgur.com/UnbC9Lh.png =150x100)
+![Screenshot](http://i.imgur.com/J6z2rDf.png =150x100)
+![Screenshot](http://i.imgur.com/vj6gaAk.png =150x100)
 
 
 
