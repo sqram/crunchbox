@@ -29,7 +29,7 @@ Out of the box, Crunchbox comes with the following plugins
 <img src="http://i.imgur.com/UnbC9Lh.png" width="200" height="150" />
 <img src="http://i.imgur.com/J6z2rDf.png" width="200" height="150" />
 <img src="http://i.imgur.com/vj6gaAk.png" width="200" height="150" />
-
+<img src='http://i.imgur.com/9fTMlzZ.png' width="200" height="150" />
 
 
 ## Instructions
